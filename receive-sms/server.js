@@ -9,11 +9,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.post('/sms', (req, res) => {
   const { body } = req;
   const { From: msgFrom, Body: msgBody } = body;
+  const from = msgFrom === '+16476578586' ? 'Julian' : msgFrom;
 
-  console.log(`${msgFrom === '+16476578586' ? 'Julian' : msgFrom} said, ${msgBody}`);
-  
-
-  // req.send(`${msgFrom} said, ${msgBody}`);
+  console.log(`${from}: ${msgBody}`);
 });
 
 http.createServer(app).listen(3001, () => {
